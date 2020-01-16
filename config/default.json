@@ -1,5 +1,5 @@
 {
   "port": 5000,
   "jwtSecret": "lol",
-  "mongoURL": "mongodb://localhost/User"
+  "mongoURL": "mongodb+srv://admin:admin@cluster0-ztdgp.azure.mongodb.net/test?retryWrites=true&w=majority"
 }
