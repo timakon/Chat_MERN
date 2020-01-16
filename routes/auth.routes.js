@@ -35,9 +35,8 @@ router.post(
 
             const date = new Date();
             const hashedPassword = await bcrypt.hash(password, 12)
-            const user = new User({ email, password: hashedPassword, date })
-            console.log(user);
-            console.log('===========================================');
+            const user = new User({ email:email, password: hashedPassword, date:date })
+
 
             await user.save();
 
@@ -93,6 +92,5 @@ router.post(
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })
         }
     })
-
 
 module.exports = router
