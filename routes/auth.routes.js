@@ -37,11 +37,18 @@ router.post(
             const hashedPassword = await bcrypt.hash(password, 12)
             const user = new User({ email:email, password: hashedPassword, date:date })
 
-
             await user.save();
+
+            await jwt.sign(
+                { userId: user.id },
+                config.get('jwtSecret'),
+                { expiresIn: '1h' }
+            )
 
             res.status(201).json({ message: 'Пользователь создан' })
 
+
+            //console.log({token, userId: user.id});
         } catch (e) {
             console.log(e)
             res.status(500).json({ message: 'Что-то пошло не так, попробуйте снова' })

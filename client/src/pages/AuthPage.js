@@ -22,15 +22,18 @@ export const AuthPage = () => {
 
     const registerHandler = async () => {
         try {
-           // const data = await request('/api/auth/register', 'POST', {...form})
-           await request('/api/auth/register', 'POST', {...form})
-           //mes(data.message)
+            const data1 = await request('/api/auth/register', 'POST', {...form})
+            if(!data1.isEmpty){
+               const data2 = await request('/api/auth/login', 'POST', {...form})
+                auth.login(data2.token, data2.userId)
+            }
         } catch (e) {}
     }
     const loginHandler = async () => {
         try {
             const data = await request('/api/auth/login', 'POST', {...form})
             auth.login(data.token, data.userId)
+            console.log(data.token, data.userId)
         } catch (e) {}
     }
 
