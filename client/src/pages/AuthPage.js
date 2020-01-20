@@ -24,16 +24,16 @@ export const AuthPage = () => {
         try {
             const data1 = await request('/api/auth/register', 'POST', {...form})
             if(!data1.isEmpty){
-               const data2 = await request('/api/auth/login', 'POST', {...form})
-                auth.login(data2.token, data2.userId)
+               const data2 = await request('/api/auth/login', 'POST', {...form}) //TODO delete all fields with email
+                auth.login(data2.token, data2.userId, form.email)
             }
         } catch (e) {}
     }
     const loginHandler = async () => {
         try {
-            const data = await request('/api/auth/login', 'POST', {...form})
-            auth.login(data.token, data.userId)
-            console.log(data.token, data.userId)
+            const data = await request('/api/auth/login', 'POST', {...form}) //TODO delete all fields with email
+            auth.login(data.token, data.userId, form.email)
+            console.log(data.token, data.userId, form.email)
         } catch (e) {}
     }
 
