@@ -3,12 +3,12 @@ import {useState, useCallback, useEffect} from 'react'
 export const useAuth = () => {
     const [token, setToken] = useState(null)
     const [userId, setUseId] = useState(null)
-    const [email, setEmail] = useState(null)
+        //   const [email, setEmail] = useState(null)
 
     const login = useCallback((jwtToken, id,email) => { //TODO delete all fields with email
         setToken(jwtToken)
         setUseId(id)
-        setEmail(email)
+       // setEmail(email)
 
         localStorage.setItem('userData', JSON.stringify({
             userId:id,

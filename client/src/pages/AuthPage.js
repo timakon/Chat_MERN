@@ -33,7 +33,6 @@ export const AuthPage = () => {
         try {
             const data = await request('/api/auth/login', 'POST', {...form}) //TODO delete all fields with email
             auth.login(data.token, data.userId, form.email)
-            console.log(data.token, data.userId, form.email)
         } catch (e) {}
     }
 
